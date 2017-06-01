@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="stateUnchanged|adjustPan"
+    tools:context="com.haojiu.Activity.MainActivity">
+
+
+
+    <!-- 底部按钮 -->
+
+    <LinearLayout
+        android:background="#216CDB"
+        android:id="@+id/main_fragment_rgp"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        >
+
+        <!-- 入库 -->
+
+        <RelativeLayout
+            android:id="@+id/lay_ruku"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:onClick="rukuClick" >
+            <TextView
+                android:id="@+id/tx_ruku"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dip"
+                android:textColor="#FFFFFF"
+                android:text="入库"
+                android:textSize="15.0sp" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/view_line_1"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/main_fragment_rgp"
+            android:background="#FFFFFF" />
+        <!-- 出库 -->
+
+        <RelativeLayout
+            android:id="@+id/lay_chuku"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:onClick="chukuClick" >
+
+
+
+            <TextView
+                android:id="@+id/tx_chuku"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dip"
+                android:text="出库"
+                android:textColor="#FFFFFF"
+                android:textSize="15.0sp" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/view_line_2"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/main_fragment_rgp"
+            android:background="#FFFFFF" />
+        <!-- 盘点-->
+
+        <RelativeLayout
+            android:id="@+id/lay_pandian"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:onClick="pandianClick" >
+
+
+
+            <TextView
+                android:id="@+id/tx_pandian"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dip"
+                android:text="盘点"
+                android:textColor="#FFFFFF"
+                android:textSize="15.0sp" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/view_line_3"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/main_fragment_rgp"
+            android:background="#FFFFFF" />
+        <!-- 查询-->
+
+        <RelativeLayout
+            android:id="@+id/lay_chaxun"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:onClick="chaxunClick" >
+
+
+
+            <TextView
+                android:id="@+id/tx_chaxun"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dip"
+                android:text="查询"
+                android:textColor="#FFFFFF"
+                android:textSize="15.0sp" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/view_line_4"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/main_fragment_rgp"
+            android:background="#FFFFFF" />
+        <!-- 审核-->
+
+        <RelativeLayout
+            android:id="@+id/lay_shenhe"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:onClick="shenheClick" >
+
+
+
+            <TextView
+                android:id="@+id/tx_shenhe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dip"
+                android:text="审核"
+                android:textColor="#FFFFFF"
+                android:textSize="15.0sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_line_5"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/main_fragment_rgp"
+            android:background="#FFFFFF" />
+        <!-- 个人-->
+
+        <RelativeLayout
+            android:id="@+id/lay_geren"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:onClick="gerenClick" >
+
+
+
+            <TextView
+                android:id="@+id/tx_geren"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dip"
+                android:text="个人"
+                android:textColor="#FFFFFF"
+                android:textSize="15.0sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/main_fragment_rgp"
+        android:background="#F0F0F0" />
+    <FrameLayout
+        android:id="@+id/Fregment_content"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/view_line"
+        ></FrameLayout>
+    <!-- 底部线 -->
+
+
+
+</RelativeLayout>
