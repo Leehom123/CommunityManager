@@ -42,8 +42,7 @@ public class MainActivity extends Activity {
         //设置无标题
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //设置全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
         setView();
@@ -130,7 +129,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        setBottomBtn(0);
+       // setBottomBtn(0);
     }
 
     /**

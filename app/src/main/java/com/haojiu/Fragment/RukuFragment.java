@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.haojiu.Activity.RukuDetailsActivity;
 import com.haojiu.Adapter.GroupAdapter;
 import com.haojiu.Bean.SheetNo;
+import com.haojiu.Utils.DbUtils;
 import com.haojiu.Utils.MyOpenHelper;
 import com.haojiu.communitymanager.R;
 
@@ -41,7 +42,6 @@ import java.util.List;
 public class RukuFragment extends Fragment implements View.OnClickListener,  AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener {
 
     private ListView lv_rukudan;
-    private int order = 0;
     private RelativeLayout rl_add;
     private String sheet_no;
     private ArrayList<SheetNo> sheetNos;
@@ -58,7 +58,6 @@ public class RukuFragment extends Fragment implements View.OnClickListener,  Ada
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.ruku_layout, container, false);
         setView(view);
-        loadOrder();
         refreshRukudan(view);
         return view;
     }
@@ -77,28 +76,13 @@ public class RukuFragment extends Fragment implements View.OnClickListener,  Ada
         SQLiteDatabase db = myOpenHelper.getWritableDatabase();
         switch (view.getId()) {
             case R.id.rl_add://新增按钮
-                order++;
-                //生成订单号
-                long timeMillis = System.currentTimeMillis();
-                Date date = new Date(timeMillis);
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-                String time = formatter.format(date);
-                DecimalFormat f = new DecimalFormat("00000");
-                String str = f.format(order);
-                sheet_no = "SJD" + time + str;
-                //将入库单号存入本地数据库
-                ContentValues values = new ContentValues();
-                values.put("order_no", sheet_no);
-                long insert = db.insert("VIEW_MOB_ORDER", null, values);
-                if (insert > 0) {
-                    Toast.makeText(getActivity(), "入库单号已保存", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "入库单号保存失败", Toast.LENGTH_SHORT).show();
-                }
+
+                DbUtils dbu = new DbUtils(getActivity());
+                sheet_no = dbu.getNewOrder("0");
+
                 refreshRukudan(view);
                 break;
         }
-        db.close();
     }
 
     @Override
@@ -149,62 +133,18 @@ public class RukuFragment extends Fragment implements View.OnClickListener,  Ada
     }
 
 
-    public void loadOrder() {
-        MyOpenHelper myOpenHelper = new MyOpenHelper(getActivity());
-        SQLiteDatabase db = myOpenHelper.getWritableDatabase();
-
-        long timeMillis = System.currentTimeMillis();
-        Date date = new Date(timeMillis);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        String dateStr = formatter.format(date);
-
-        String[] params = new String[]{"%" + dateStr + "%"};
-        Cursor sheet_no_cs = db.query("VIEW_MOB_ORDER", null, " order_no like ? ", params, null, null, null, null);
-
-        int maxOrder = 0;
-        if (sheet_no_cs != null && sheet_no_cs.getCount() > 0) {
-            while (sheet_no_cs.moveToNext()) {
-                String sheet_no = sheet_no_cs.getString(1);
-                if (sheet_no == null || "".equals(sheet_no)) {
-                    continue;
-                }
-                int thisOrder = Integer.valueOf(sheet_no.substring(sheet_no.length() - 3, sheet_no.length()));
-                //thisOrder
-                if (thisOrder > maxOrder) {
-                    maxOrder = thisOrder;
-                }
-            }
-        }
-        order = maxOrder;
-    }
-
     @Override
     public void onResume() {
         super.onResume();
-        loadOrder();
         refreshRukudan(view);
     }
 
     public void refreshRukudan(View view) {
         //查询
-        MyOpenHelper myOpenHelper = new MyOpenHelper(getActivity());
-        db = myOpenHelper.getWritableDatabase();
-        sheetNos = new ArrayList<SheetNo>();
-        Cursor sheet_no_cs = db.query("VIEW_MOB_ORDER", null, null, null, null, null, null);
-        if (sheet_no_cs != null && sheet_no_cs.getCount() > 0) {
-            while (sheet_no_cs.moveToNext()) {
-                String sheet_no = sheet_no_cs.getString(1);
-                SheetNo sheetno = new SheetNo(sheet_no);
-                sheetNos.add(sheetno);
-            }
-        }
+        DbUtils dbu = new DbUtils(getActivity());
+        sheetNos = dbu.getOrderList("0");
         lv_rukudan.setAdapter(new RukuListViewAdaptor(view.getContext()));
         lv_rukudan.setOnItemClickListener(this);
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                startActivity(new Intent(getActivity(),RukuDetailsActivity.class).putExtra("sheet_no",sheetNos.get(i).getSheet_no()));
-//            }
-//        });
     }
     private void showWindow(View parent) {
 
@@ -218,7 +158,6 @@ public class RukuFragment extends Fragment implements View.OnClickListener,  Ada
             // 加载数据
             groups = new ArrayList<String>();
             groups.add("删除");
-
 
             GroupAdapter groupAdapter = new GroupAdapter(getActivity(), groups);
             lv_group.setAdapter(groupAdapter);
@@ -241,12 +180,17 @@ public class RukuFragment extends Fragment implements View.OnClickListener,  Ada
 
         popupWindow.showAsDropDown(parent, xPos,0);
 
+        if(lv_group == null){
+            return;
+        }
+
         lv_group.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view,
                                     int position, long id) {
-                db.delete("VIEW_MOB_ORDER", "order_no=? ", new String[]{sheet_no_del});
+                DbUtils dbu = new DbUtils(getActivity());
+                dbu.deleteOrder(sheet_no_del,"0");
                 refreshRukudan(view);
                 if (popupWindow != null) {
                     popupWindow.dismiss();

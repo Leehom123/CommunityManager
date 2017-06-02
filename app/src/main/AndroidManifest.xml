@@ -20,11 +20,14 @@
             </intent-filter>
         </activity>
         <activity android:name="com.haojiu.Activity.SettingActivity"></activity>
-        <activity android:name="com.haojiu.Activity.MainActivity" android:launchMode="singleInstance"  android:noHistory="false"></activity>
+        <activity android:name="com.haojiu.Activity.MainActivity" ></activity>
         <activity android:name="com.haojiu.Activity.RegistActivity"></activity>
         <activity android:name="com.haojiu.Activity.RukuDetailsActivity" ></activity>
+        <activity android:name="com.haojiu.Activity.OutDetailsActivity" ></activity>
+        <activity android:name="com.haojiu.Activity.CheckDetailsActivity" ></activity>
         <activity android:name="com.haojiu.Activity.ZxingActivity"></activity>
         <activity android:name="com.haojiu.Activity.GoodDetailsActivity"></activity>
+        <activity android:name="com.haojiu.Activity.DetailsReadonlyActivity"></activity>
     </application>
 
 </manifest>

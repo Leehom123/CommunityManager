@@ -10,6 +10,7 @@ public class Good {
     private float sheet_sn;
     private String branch_no;
     private String sup_no;
+    private String cust_no;
     private String emp_no;
     private String item_no;
     private String item_barcode;
@@ -23,13 +24,20 @@ public class Good {
     private String item_name;
     private String status;//状态：是否已提价 0：未提交，1：已提交
 
-    public Good(String mob_no, String sheet_no, float sheet_sn, String branch_no, String sup_no, String emp_no, String item_no, String item_barcode,
+    private String branchName;
+    private String supName;
+
+    private String custName;
+    private String empName;
+
+    public Good(String mob_no, String sheet_no, float sheet_sn, String branch_no, String sup_no,String cust_no, String emp_no, String item_no, String item_barcode,
                 float item_price, float item_qty, String item_unit, float lastdate, String batch_no, String color, String size,String item_name,String status) {
         this.mob_no = mob_no;
         this.sheet_no = sheet_no;
         this.sheet_sn = sheet_sn;
         this.branch_no = branch_no;
         this.sup_no = sup_no;
+        this.cust_no = cust_no;
         this.emp_no = emp_no;
         this.item_no = item_no;
         this.item_barcode = item_barcode;
@@ -43,7 +51,18 @@ public class Good {
         this.item_name=item_name;
         this.status = status;
     }
-
+    public Good ( String mob_no,  String sheet_no,  float sheet_sn,  String branch_no, String item_no,
+                  String bar_code,  float item_qty, String item_unit,String status){
+        this.mob_no = mob_no;
+        this.sheet_no = sheet_no;
+        this.sheet_sn = sheet_sn;
+        this.branch_no = branch_no;
+        this.item_no = item_no;
+        this.item_barcode = bar_code;
+        this.item_qty = item_qty;
+        this.item_unit = item_unit;
+        this.status = status;
+    }
     public String getItem_name() {
         return item_name;
     }
@@ -90,6 +109,14 @@ public class Good {
 
     public void setSup_no(String sup_no) {
         this.sup_no = sup_no;
+    }
+
+    public String getCust_no() {
+        return cust_no;
+    }
+
+    public void setCust_no(String cust_no) {
+        this.cust_no = cust_no;
     }
 
     public String getEmp_no() {
@@ -179,4 +206,37 @@ public class Good {
     public void setStatus(String status){
         this.status = status;
     }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
+    public String getSupName() {
+        return supName;
+    }
+
+    public void setSupName(String supName) {
+        this.supName = supName;
+    }
+
+    public String getCustName() {
+        return custName;
+    }
+
+    public void setCustName(String custName) {
+        this.custName = custName;
+    }
+
+    public String getEmpName() {
+        return empName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
 }

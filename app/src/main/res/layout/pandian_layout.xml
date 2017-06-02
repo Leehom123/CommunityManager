@@ -3,8 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:text="盘点"
+    <View
+        android:id="@+id/view_line_6"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/main_fragment_cgp"
+        android:background="#F0F0F0" />
+
+    <RelativeLayout
+        android:background="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></TextView>
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rlp_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_saomiaoc"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/addicon"/>
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img_saomiaoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新增"/>
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_linec"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/main_fragment_rgp"
+        android:background="#F0F0F0" />
+
+    <ListView
+        android:id="@+id/lv_pandiandan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
 </LinearLayout>

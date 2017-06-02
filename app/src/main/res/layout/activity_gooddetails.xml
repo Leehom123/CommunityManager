@@ -5,8 +5,14 @@
     android:orientation="vertical">
 
     <include layout="@layout/title_top_layout"></include>
-
-    <RelativeLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <RelativeLayout android:id="@+id/rl_sup"
         android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +38,31 @@
             android:layout_height="wrap_content"></Spinner>
     </RelativeLayout>
 
+    <RelativeLayout android:id="@+id/rl_cust"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/biankuang"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客户："/>
+        <Spinner
+            android:id="@+id/sp_cust"
+            android:textAlignment="viewEnd"
+            android:gravity="end"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></Spinner>
+    </RelativeLayout>
     <RelativeLayout
         android:paddingTop="10dp"
         android:layout_width="match_parent"
@@ -233,6 +264,101 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_centerVertical="true"
+            android:text="单位：" />
+
+        <TextView
+            android:id="@+id/unit_text_gooddetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"></TextView>
+    </RelativeLayout>
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/biankuang"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:text="颜色：" />
+
+        <EditText
+            android:id="@+id/text_color_gooddetail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="right"
+            android:inputType="number"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"></EditText>
+    </RelativeLayout>
+    <RelativeLayout
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/biankuang"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:text="尺寸：" />
+
+        <EditText
+            android:id="@+id/text_size_gooddetail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="right"
+            android:inputType="number"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"></EditText>
+    </RelativeLayout>
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/biankuang"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
             android:text="批号：" />
 
         <EditText
@@ -254,4 +380,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="保存"/>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

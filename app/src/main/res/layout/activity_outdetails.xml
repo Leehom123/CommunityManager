@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/title_top_layout"></include>
+
     <View
         android:id="@+id/view_line_6"
         android:layout_width="fill_parent"
         android:layout_height="10dp"
-        android:layout_below="@+id/main_fragment_cgp"
+        android:layout_below="@+id/main_fragment_rgp"
         android:background="#F0F0F0" />
 
     <RelativeLayout
@@ -16,36 +18,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
-            android:id="@+id/rlc_add"
+            android:id="@+id/rlo_saomiao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/img_saomiaoc"
+                android:id="@+id/img_saomiao"
                 android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/saomiao"/>
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img_saomiao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扫描"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlo_commit"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_commit"
+                android:padding="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/tv_commit"
                 android:src="@drawable/addicon"/>
             <TextView
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/img_saomiaoc"
+                android:id="@+id/tv_commit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="新增"/>
+                android:text="提交"/>
         </RelativeLayout>
-
-
-
     </RelativeLayout>
 
     <View
-        android:id="@+id/view_linec"
+        android:id="@+id/view_line"
         android:layout_width="fill_parent"
         android:layout_height="10dp"
         android:layout_below="@+id/main_fragment_rgp"
         android:background="#F0F0F0" />
-
     <ListView
-        android:id="@+id/lv_chukudan"
+        android:id="@+id/lvo_good"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>

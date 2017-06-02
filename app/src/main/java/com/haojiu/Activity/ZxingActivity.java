@@ -75,7 +75,7 @@ public class ZxingActivity extends Activity implements ScanListener {
         }
         scan_image.setVisibility(View.VISIBLE);
         Log.e("zx","结果："+rawResult.getText());
-        startActivity(new Intent(ZxingActivity.this,GoodDetailsActivity.class).putExtra("GoodCode",rawResult.getText().toString()).putExtra("sheet_no",getIntent().getStringExtra("sheet_no")));
+        startActivity(new Intent(ZxingActivity.this,GoodDetailsActivity.class).putExtra("GoodCode",rawResult.getText().toString()).putExtra("sheet_no",getIntent().getStringExtra("sheet_no")).putExtra("busiType",getIntent().getStringExtra("busiType")));
         finish();
     }
 
